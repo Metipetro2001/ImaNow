@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ima main</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('IMA/BACK.jpg'); /* Replace 'background-image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Ensure the background covers the full height of the viewport */
+        }
+
+        .icon {
+            color: rgb(224, 11, 107);
+            font-size: 35px;
+            font-family: Arial;
+            padding-left: 20px;
+            background-attachment: fixed;
+            background-color: navy;
+            font-style: italic;
+        }
+
+        a {
+            color: rgb(232, 224, 224);
+        }
+
+        .menu {
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 200px;
+        }
+
+        li {
+            text-align: right;
+            display: inline-block;
+            font-size: 30px;
+            margin-right: 20px;
+            margin-left: 30px;
+        }
+
+        li:hover {
+            color: rgb(224, 11, 107);
+        }
+
+        .slider {
+            width: 100%;
+            overflow-x: hidden; /* Hide overflowing content */
+            position: relative;
+        }
+
+        .slider-container {
+            display: flex; /* Arrange sections horizontally */
+            transition: transform 0.5s ease; /* Smooth sliding transition */
+        }
+
+        .section {
+            flex: 0 0 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white; /* Set font color to white */
+        }
+
+        .section p {
+            margin: 0;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px;
+        }
+     
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 5px;
+            color: #000; /* Change color as needed */
+            font-size: 20px;
+        }
+
+        .container {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 500px;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: black; /* Set label color to black */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        input[type="button"] {
+            width: calc(100% - 16px);
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        ::placeholder {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <div class="icon">
+                <h2 class="logo">Ima_NOW</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="Index.html">HOME</a></li>
+                    <li><a href="Ima about us OUTSIDE.html">ABOUT US</a></li>
+                    <li><a href="#">WHITEPAPER</a></li>
+                    <li><a href="#">AIRDROP</a></li>
+                    <li><a href="Ima login.html">MINING</a></li>
+                    <li><a href="Ima login.html">DASHBOARD</a></li>
+                    <li><a href="Ima login.html">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <h2>Sign up and get your welcome gift</h2>
+        <form id="signup-form">
+            <label>First Name:</label>
+            <input type="text" name="firstName" placeholder="Enter your first name" required minlength="3"><br>
+
+            <label>Last Name:</label>
+            <input type="text" name="lastName" placeholder="Enter your last name" required minlength="3"><br>
+
+            <label>Country:</label>
+            <input type="text" name="country" placeholder="Enter your country" required minlength="3"><br>
+
+            <label>Phone Number:</label>
+            <input type="text" name="phoneNumber" placeholder="Enter your phone number" required minlength="4"><br>
+
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter your email" required><br>
+
+            <label>Create a Password:</label>
+            <input type="password" name="password" placeholder="Create a password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"><br>
+            <!-- Minimum 8 characters, at least 1 letter and 1 number -->
+
+            <label>Confirm Password:</label>
+            <input type="password" name="confirmPassword" placeholder="Confirm your password" required><br>
+
+            <label>Human Verification: What is 2 + 2?</label>
+            <input type="text" name="humanVerification" placeholder="Your answer" required><br>
+
+            <input type="button" value="Submit" onclick="submitForm()"><br>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ImaNow2024. All rights reserved.</p>
+        <!-- Social media icons -->
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        function submitForm() {
+            const firstName = document.querySelector('input[name="firstName"]').value;
+            const lastName = document.querySelector('input[name="lastName"]').value;
+            const country = document.querySelector('input[name="country"]').value;
+            const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+            const confirmPassword = document.querySelector('input[name="confirmPassword"]').value;
+            const humanVerification = document.querySelector('input[name="humanVerification"]').value;
+
+            if (humanVerification !== '4') {
+                alert('Incorrect answer. Please try again.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+
+            if (!email.includes('.')) {
+                alert('Invalid email format. Email must contain a dot (.).');
+                return;
+            }
+
+            const userData = {
+                firstName,
+                lastName,
+                country,
+                phoneNumber,
+                email,
+                password
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                window.location.href = 'Ima_login.html'; // Replace with your actual login page
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            });
+        }
+    </script>
+</body>
+</html>
+

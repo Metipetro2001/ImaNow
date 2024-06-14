@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ima Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('IMA/BACK.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .icon {
+            color: rgb(224, 11, 107);
+            font-size: 35px;
+            padding-left: 20px;
+            background-color: navy;
+            font-style: italic;
+        }
+
+        .icon h2 {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+            background-color: navy;
+            display: flex;
+            justify-content: center;
+        }
+
+        li {
+            font-size: 20px;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        li:hover {
+            color: rgb(224, 11, 107);
+        }
+
+        .dashboard-container {
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 1000px;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+
+        .dashboard-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: navy;
+        }
+
+        .user-info {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .user-info h3, .user-info p {
+            margin: 5px 0;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #000;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="icon">
+            <h2 class="logo">Ima_NOW</h2>
+        </div>
+        <ul>
+            <li><a href="Ima AdminBoard.html">ADMINBOARD</a></a>
+            <li><a href="Index.html">LOG OUT</a></li>
+        </ul>
+    </header>
+
+    <div class="dashboard-container">
+        <h2>Admin Dashboard</h2>
+        <div id="announcementContainer"></div>
+        <h3>User Details</h3>
+        <div id="usersContainer"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ImaNow2024. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="https://twitter.com/ImaNow2024">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        async function loadAnnouncements() {
+            try {
+                const response = await fetch('/api/getAnnouncements');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                let announcements = await response.json();
+                const announcementContainer = document.getElementById('announcementContainer');
+                announcementContainer.innerHTML = announcements.map(announcement => `
+                    <div class="announcement">
+                        <p>${announcement.content}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Failed to load announcements data', error);
+                const announcementContainer = document.getElementById('announcementContainer');
+                announcementContainer.innerHTML = '<p>Failed to load announcements data. Please try again later.</p>';
+            }
+        }
+
+        async function loadUsers() {
+            try {
+                const response = await fetch('/api/getAllUsers');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                let users = await response.json();
+                // Sort users by accumulatedAmount in descending order
+                users.sort((a, b) => b.accumulatedAmount - a.accumulatedAmount);
+                const usersContainer = document.getElementById('usersContainer');
+                usersContainer.innerHTML = users.map(user => `
+                    <div class="user-info">
+                        <h3>Username: ${user.username}</h3>
+                        <p>Accumulated Amount: ${user.accumulatedAmount} Ima</p>
+                        <p>Mining Start Time: ${new Date(user.miningStartTime).toLocaleString()}</p>
+                        <p>Messages: ${user.messages.join(', ')}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Failed to load users data', error);
+                const usersContainer = document.getElementById('usersContainer');
+                usersContainer.innerHTML = '<p>Failed to load users data. Please try again later.</p>';
+            }
+        }
+
+        window.onload = function() {
+            loadAnnouncements
+            ();
+            loadUsers();
+        };
+    </script>
+</body>
+</html>
+
+
+
+

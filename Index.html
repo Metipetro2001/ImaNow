@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ima main</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('IMA/BACK.jpg'); /* Replace 'IMA/BACK.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Ensure the background covers the full height of the viewport */
+        }
+
+        .icon {
+            color: rgb(224, 11, 107);
+            font-size: 35px;
+            font-family: Arial;
+            padding-left: 20px;
+            background-attachment: fixed;
+            background-color: navy;
+            font-style: italic;
+        }
+
+        a {
+            color: white;
+        }
+
+        li {
+            text-align: right;
+            display: inline-block;
+            font-size: 30px;
+            margin-right: 20px;
+            margin-left: 30;
+        }
+
+        .menu {
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 200;
+            size: 100px;
+            /* background-color: rgb(158, 158, 169); */
+        }
+
+        li:hover {
+            color: rgb(224, 11, 107);
+        }
+
+        .slider {
+            width: 100%;
+            overflow-x: hidden; /* Hide overflowing content */
+            position: relative;
+        }
+
+        .slider-container {
+            display: flex; /* Arrange sections horizontally */
+            transition: transform 0.5s ease; /* Smooth sliding transition */
+        }
+
+        .section {
+            flex: 0 0 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white; /* Set font color to white */
+        }
+
+        .section p {
+            margin: 0;
+        }
+
+        button {
+            color: rgb(233, 18, 53);
+        }
+
+        /* Style for footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Style for social media icons */
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 5px;
+            color: #000; /* Change color as needed */
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="nav">
+            <div class="icon">
+                <h2 class="logo">Ima_Now</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#about-us">ABOUT US</a></li>
+                    <li><a href="#">WHITEPAPER</a></li>
+                    <li><a href="#airdrop">AIRDROP</a></li>
+                    <li><a href="#mining">MINING</a></li>
+                    <li><a href="#dashboard">DASHBOARD</a></li>
+                    <li><a href="#sign-up">SIGN UP</a></li>
+                    <li><a href="#login">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="slider">
+        <button onclick="slideLeft()">Previous</button>
+        <button onclick="slideRight()">Next</button>
+        <div class="slider-container">
+            <div class="section">
+                <p>🚀 Our Long-Term Vision:</p>
+                <p>Genesis of Ima: We're not just disrupting; we're redefining. Rooted in transparency and accessibility, Ima challenges the status quo to create a space where everyone has a voice.</p>
+                <p>Mission in Motion: Our goal? Empowering individuals through fair distribution and groundbreaking mining methods. It's time for a crypto world where everyone gets a seat at the table.</p>
+                <p>Key Features: From fair distribution to community governance and sustainable practices, Ima embodies the values of inclusivity and progress.</p>
+            </div>
+        
+            <div class="section">
+                <p>🔍 Phase One Adventure:</p>
+                <p>Website Launch: Prepare to embark on a journey with our user-friendly platform, where airdrops and mining opportunities await discovery.</p>
+                <p>Airdrop Unleashed: Be part of history as we kick off our airdrop campaign, ensuring that Ima tokens find their way into the hands of all.</p>
+            </div>
+        
+            <div class="section">
+                <p>Smart Contract Release: Your security is non-negotiable. Explore our smart contract, ensuring seamless and transparent transactions.</p>
+                <p>Claim Your Tokens: It's time to make your mark! Claim your tokens effortlessly and become a part of the Ima community.</p>
+            </div>
+        
+            <div class="section">
+                <p>CEX Listing: We're gearing up to make a splash on major exchanges, ensuring that Ima tokens are within reach for everyone.</p>
+                <p>Free Mining: Start mining Ima tokens for free and play your part in our democratized ecosystem.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ImaNow2024. All rights reserved.</p>
+        <!-- Social media icons -->
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="https://twitter.com/ImaNow2024">Twitter</a>
+            <a href="#">Instagram</a>
+            <!-- Add more social media icons as needed -->
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript code for sliding functionality
+        let sliderContainer = document.querySelector('.slider-container');
+        let currentIndex = 0;
+
+        function slideLeft() {
+            currentIndex = Math.max(currentIndex - 1, 0);
+            updateSliderPosition();
+        }
+
+        function slideRight() {
+            currentIndex = Math.min(currentIndex + 1, sliderContainer.children.length - 1);
+            updateSliderPosition();
+        }
+
+        function updateSliderPosition() {
+            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

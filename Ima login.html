@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ima Main</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('IMA/BACK.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Ensure the background covers the full height of the viewport */
+        }
+
+        .icon {
+            color: rgb(224, 11, 107);
+            font-size: 35px;
+            font-family: Arial;
+            padding-left: 20px;
+            background-attachment: fixed;
+            background-color: navy;
+            font-style: italic;
+        }
+
+        a {
+            color: white; /* Adjust link color as needed */
+        }
+
+        li {
+            text-align: right;
+            display: inline-block;
+            font-size: 30px;
+            margin-right: 20px;
+            margin-left: 30px;
+        }
+
+        .menu {
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 200; /* Adjust margin bottom */
+            size: 100px; /* This seems incorrect, not needed */
+        }
+
+        li :hover {
+            color: rgb(224, 11, 107);
+        }
+
+        .container {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            margin-top: 50px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: aliceblue; /* Adjust label color */
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff; /* Button color */
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Button hover color */
+        }
+
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.7); /* Adjust placeholder color */
+        }
+
+        /* Style for footer */
+        footer {
+            position: fixed; /* Fixed position */
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa; /* Footer background color */
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Style for social media icons */
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 5px;
+            color: #000; /* Adjust social media icon color */
+            font-size: 20px;
+        }
+
+        /* Additional styles for password recovery */
+        .forgot-password-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <div class="icon">
+                <h2 class="logo">Ima_NOW</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="Ima about us OUTSIDE.html">ABOUT US</a></li>
+                    <li><a href="#">WHITEPAPER</a></li>
+                    <li><a href="Ima login.html">AIRDROP</a></li>
+                    <li><a href="Ima login.html">MINING</a></li>
+                    <li><a href="Ima login.html">DASHBOARD</a></li>
+                    <li><a href="Ima Sign up page.html">SIGN UP</a></li>
+                    <li><a href="Ima login.html">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <label>Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required><br>
+
+            <label>Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required><br>
+
+            <input type="submit" value="Submit"><br>
+        </form>
+        <p id="error-message" style="color: red; display: none;">Invalid email or password. Please try again.</p>
+        <p id="email-not-found" style="color: red; display: none;">Email not found. Please check your email or sign up.</p>
+
+        <!-- Link for password recovery -->
+        <div class="forgot-password-link">
+            <a href="#" id="forgot-password">Forgot Password?</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ImaNow2024. All rights reserved.</p>
+        <!-- Social media icons -->
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="https://twitter.com/ImaNow2024">Twitter</a>
+            <a href="#">Instagram</a>
+            <!-- Add more social media icons as needed -->
+        </div>
+    </footer>
+
+    <!-- JavaScript for handling login -->
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const email = this.email.value;
+            const password = this.password.value;
+            const errorMessage = document.getElementById('error-message');
+            const emailNotFound = document.getElementById('email-not-found');
+
+            // Reset error messages
+            errorMessage.style.display = 'none';
+            emailNotFound.style.display = 'none';
+
+            // Validate email format
+            if (!email.includes('@') || !email.includes('.')) {
+                errorMessage.textContent = 'Invalid email format.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Simulate server-side validation for the email and password
+            const registeredUsers = [
+                { email: 'petrometi2001@gmail.com', password: '*vi0716211054#' },
+                { email: 'petersirgudie@gmail.com', password: '*vi0716211054#' }
+            ];
+
+            const user = registeredUsers.find(user => user.email === email);
+
+            if (!user) {
+                emailNotFound.style.display = 'block';
+                return;
+            }
+
+            if (user.password !== password) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // If all validations pass, proceed with login
+            alert('Login successful!');
+            // Redirect the user to the admin board
+            window.location.href = 'Ima AdminBoard.html'; // Adjust the path as needed
+        });
+
+        document.getElementById('forgot-password').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Prompt the user to enter their email
+            const email = prompt('Please enter your email:');
+            
+            // Perform server-side validation and send password reset instructions via email
+            if (email) {
+                alert('Password reset instructions sent to ' + email);
+                // Simulate server-side action
+                // You should implement server-side logic to send password reset instructions via email
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
